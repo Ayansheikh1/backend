@@ -2,8 +2,19 @@ const express = require('express')
 const app = express()
 const port = 3000
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+function logger(req,res,next){
+  console.log("Method: ",req.method);
+  console.log("URL:",req.url);
+  console.log("Time: ", new Date());
+
+  next();
+
+}
+
+app.use(logger);
+
+app.get('/', (req,res)=>{
+  res.send("Home Page");
 })
 
 app.listen(port, () => {
