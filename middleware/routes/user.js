@@ -6,4 +6,6 @@ router.get('/',(req,res)=>{
 });
 
 module.exports = router;
-// Create a separate file for routes.
+
+
+// Create a separate file for routes. 
