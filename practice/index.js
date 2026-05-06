@@ -25,6 +25,18 @@ app.get('/search',(req,res)=>{
     res.send(`Searching for ${req.query.product}`);
 });//query Parameter
 
+app.use(express.json());
+
+app.post('/login',(req,res)=>{
+    const { username , password } = req.body;
+
+    if(username && password){
+        res.send("login succesfully")
+    }else{
+        res.send("missing data")
+    }
+}) //post method 
+
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
