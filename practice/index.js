@@ -3,6 +3,12 @@ const app = express();
 const port =3000;
 
 
+app.use((req,res,next) =>{
+    console.log("request received");
+    next();
+})
+
+
 app.get('/',(req,res) =>{
     res.send("hello world!")
 })//Simple Route
@@ -21,11 +27,15 @@ app.get('/user/:name',(req,res)=>{
 }); //Route Parameter
 
 
+
+
+
 app.get('/search',(req,res)=>{
     res.send(`Searching for ${req.query.product}`);
 });//query Parameter
 
 app.use(express.json());
+
 
 app.post('/login',(req,res)=>{
     const { username , password } = req.body;
