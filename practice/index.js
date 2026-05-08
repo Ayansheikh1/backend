@@ -3,19 +3,44 @@ const app = express();
 const port =3000;
 
 
+
+
+function logger(req,res,next){
+console.log("request URL :", req.url);
+console.log("Method :", req.method);
+console.log("time: ", new Date());
+
+next();
+} // simple logger middleware
+
+
+function checkToken(req,res,next){
+ if(req.query.token === "123"){
+    console.log("welcome user");
+    next();
+} else{
+    console.log("access denied");
+} } //custom middleware
+
 app.use((req,res,next) =>{
     console.log("request received");
     next();
 })
+
+app.use(logger);
+
 
 
 app.get('/',(req,res) =>{
     res.send("hello world!")
 })//Simple Route
 
-app.get('/about',(req,res)=>{
+
+// app.use(checkToken); globally middleware
+
+app.get('/about', checkToken,(req,res)=>{
     res.send("about page");
-})
+}) //apply middleware to specific route
 
 app.get('/contact',(req,res)=>{
     res.send("contact page");
