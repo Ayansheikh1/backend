@@ -31,7 +31,7 @@ app.use((req,res,next) =>{
 })
 
 app.use(logger);
-
+//middlware 
 
 
 app.get('/',(req,res) =>{
