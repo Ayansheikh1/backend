@@ -25,7 +25,7 @@ router.get('/users', async (req,res) =>{
 
 });
 
-//create
+//create new user
 router.post('/users', async (req,res) =>{
     try {
       const{name, age, weight} = req.body;
@@ -47,7 +47,7 @@ router.post('/users', async (req,res) =>{
 });
 
 
-//update
+//update user
 
 router.put('/users/:id',async(req,res) =>{
     const{id} = req.params;
